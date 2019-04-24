@@ -1,0 +1,57 @@
+body {
+    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 45rem;
+    /* 0 - top and bottom - auto left to right:  */
+    margin: 0 auto;
+    padding: 0 6rem;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    color: #888888;
+    border-top: 1px solid #eeeeee;
+    margin-top: 1.6rem;
+    padding: 1.6rem 0;
+}
+
+header {
+    margin-top: 1.6rem;
+    margin-bottom: 2.8rem;
+}
+
+h1 {
+    font-size: 4.8rem;
+    margin-bottom: 1.2rem;
+}
+
+header a {
+    color: #888888;
+    margin-right: 1.2rem;
+    text-decoration: none;
+}
+
+.portrait {
+    width: 19rem;
+}
+
+.main-content {
+    /* takes all space with flex box */
+   flex-grow: 1;
+}
+
+input {
+    border: 1px solid #cccccc;
+    padding: 8px;
+}
+
+button {
+    color: white;
+    cursor: pointer;
+    border: 1px solid #888888;
+    background: #888888;
+    padding: 8px;
+}
