@@ -27,7 +27,7 @@ const request = require('request')
 //   })
 
 const forecast = (latitude, longitute, callback) => {
-    const url = 'https://api.darksky.net/forecast/5cc5ebfe29edbe6f120cdea9897fcf78/' + latitude + ',' + longitute
+    const url = 'https://api.darksky.net/forecast/5cc5ebfe29edbe6f120cdea9897fcf78/' + latitude + ',' + longitute + '?' + '&units=si'
     request({ url, json: true }, (error, response) => {
 
         const { body } = response
@@ -37,9 +37,22 @@ const forecast = (latitude, longitute, callback) => {
         } else if (body.error) {
             callback('Unable to find location', undefined)
         } else {
-            callback(undefined, body.daily.data[0].summary + ` It's currently ` + body.currently.temperature + ' degrees out. ' + 'There is a ' + body.currently.precipProbability + '% chance of rain.')
+            console.log(body.daily.data[0])
+            callback(undefined, 
+                body.daily.data[0].summary 
+                + ` It's currently: ` 
+                +  Math.ceil(body.currently.temperature)
+                + ' degrees out. '  
+                + `Today's high is: ` + Math.ceil(body.daily.data[0].temperatureHigh) + '. '
+                + `with a low of: ` + Math.ceil(body.daily.data[0].temperatureLow) + '. '
+                + 'There is a ' 
+                + (body.daily.data[0].precipProbability * 100)
+                + '%' + ' chance of rain. ' 
+                + 'Huminity ' + (body.daily.data[0].humidity * 100) + '%' ) 
         }
     })
 }
 
 module.exports = forecast
+
+//high and low tempeture .. the high today is ... the low today is...
